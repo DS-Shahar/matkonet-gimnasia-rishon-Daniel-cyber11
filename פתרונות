@@ -1,0 +1,129 @@
+
+//שאלה 2
+package jjj;
+
+public class f {
+	public static boolean seriesNum(int number) {
+		int count=0;  
+		if(number<10) {
+			return false;
+		}
+	    int temp = number;
+		while(temp>0) {
+			count++;
+			number=number/10;
+		}
+		 int[] arr = new int[count];
+		    temp = number;
+		    for (int i = count - 1; i >= 0; i--) {
+		        arr[i] = temp % 10;
+		        temp /= 10;
+		    }
+		int c=(arr[1]-arr[0]+10)%10;
+		for(int i=1;i<arr.length-1;i++) {
+			if((arr[i+1]-arr[i]+10)%10!=c ) {
+				return false;
+			}
+			
+		}
+		return true;
+	}
+	
+	public static int getMaxSeriesNum(int []arr) {
+		int max=0;
+		for(int i=0;i<arr.length;i++) {
+			if(seriesNum(arr[i])==true) {
+				if(max<arr[i]) {
+					max=arr[i];
+				}
+			}
+		}
+		return max;
+	}
+	
+	public static void main(String[]args) {
+		System.out.println(seriesNum(3692));
+		
+	}
+	
+
+}
+
+
+
+
+
+
+
+
+
+//שאלה 4
+
+package yt;
+import java.util.Scanner;  // Import the Scanner class
+
+public class BasketballPlayer {
+	
+	private String name;
+	private int seasonsPlayed;
+	private int seasonSalary;
+
+	
+	public int totalEarnings() {
+		  return this.seasonSalary*this.seasonsPlayed;
+	}
+	
+	public static String[] sum(BasketballPlayer[]arr,int sum) {
+		int count=0;
+		int j=0;
+		String []temp=new String[arr.length];
+		for(int i=0;i<arr.length;i++) {
+			if(totalEarnings[i]>sum) {
+				count++;
+				temp[j]=arr[i].getname;
+				j++;
+			}
+		}
+		String []arr2=new String[count];
+
+		for(int i=0;i<count;i++) {
+			arr2[i]=temp[i];
+		}
+		return arr2;
+
+	}
+
+	
+
+	    public static String getMostPopularPlayer(BasketballPlayer[] arr) {
+	        int[] mone = new int[15]; 
+	    	Scanner scanner = new Scanner(System.in);
+	        System.out.println("הכנס הצבעות (מספר בין 1 ל-15). כץוב מספר אחר כדי להפסיק:");
+
+	        while (true) {
+	            int vote = scanner.nextInt();
+	            if (vote < 1 || vote > 15) {
+	                break;
+	            }
+	            mone[vote - 1]++;
+	        }
+
+	        int maxVotes = mone[0];
+	        int maxIndex = 0;
+
+	        for (int i = 1; i < mone.length; i++) {
+	            if (mone[i] > maxVotes) {
+	                maxVotes = mone[i];
+	                maxIndex = i;
+	            }
+	        }
+
+	        return arr[maxIndex].getName();
+	    }
+	
+
+	}
+
+	
+
+
